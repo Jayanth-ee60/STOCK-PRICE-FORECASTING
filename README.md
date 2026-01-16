@@ -27,8 +27,9 @@ This project predicts the *next-day direction* and *closing price magnitude* of 
 - oc_return: Intraday strength
 - ma_ratio: Trend momentum indicator
 
-## Performane at a Glance
+## Performance at a Glance
 - The model is evaluated on its ability to predict the unseen 20% of recent market history.
+
 | Metric | Value | Description |
 | :--- | :--- | :--- |
 | *Directional Accuracy* | ~53% | How often the model correctly guessed "Up" vs "Down" |
