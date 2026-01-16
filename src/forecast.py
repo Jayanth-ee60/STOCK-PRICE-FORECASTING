@@ -19,15 +19,13 @@ df = yf.download(
     progress=False
 )
 
+# Hard failure if data didn't load
 if df.empty:
     raise RuntimeError("NIFTY data download failed. Yahoo Finance issue, not model issue.")
 
+# To Flatten MultiIndex columns immediately
 if isinstance(df.columns, pd.MultiIndex):
     df.columns = df.columns.get_level_values(0)
-
-
-df.head()
-df.info()
 
 # Sort the date and use it as the index(already an index)
 df = df.sort_index()
@@ -142,4 +140,6 @@ plt.plot(actual_close[:100], label="Actual Close")
 plt.plot(predicted_close[:100], label="Predicted Close")
 plt.legend()
 plt.title("Actual vs Predicted Close Prices")
+
+plt.savefig("results/prediction_plot.png", dpi=300, bbox_inches="tight")
 plt.show()
